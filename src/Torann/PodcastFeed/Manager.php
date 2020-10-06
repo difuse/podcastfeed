@@ -2,6 +2,7 @@
 
 namespace Torann\PodcastFeed;
 
+use Illuminate\Support\Arr;
 use DateTime;
 
 class Manager
@@ -142,7 +143,7 @@ class Manager
      */
     public function getValue($data, $key)
     {
-        $value = array_get($data, $key, $this->getDefault($key));
+        $value = Arr::get($data, $key, $this->getDefault($key));
 
         return htmlspecialchars($value);
     }
@@ -187,7 +188,7 @@ class Manager
      */
     public function getDefault($key, $fallback = null)
     {
-        return array_get($this->config['defaults'], $key, $fallback);
+        return Arr::get($this->config['defaults'], $key, $fallback);
     }
 
     /**
