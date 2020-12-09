@@ -57,6 +57,13 @@ class Manager
     private $author;
 
     /**
+     * Explicit podcast ?
+     *
+     * @var string
+     */
+    private $explicit;
+
+    /**
      * Category of the podcast.
      *
      * @var string
@@ -124,6 +131,7 @@ class Manager
         $this->link = $this->getValue($data, 'link');
         $this->image = $this->getValue($data, 'image');
         $this->author = $this->getValue($data, 'author');
+        $this->explicit = $this->getValue($data, 'explicit');
 
         // Optional values
         $this->category = $this->getValue($data, 'category');
@@ -265,6 +273,12 @@ class Manager
         if ($this->category !== null) {
             $category = $dom->createElement("itunes:category", $this->category);
             $channel->appendChild($category);
+        }
+
+        // Create the <itunes:explicit>
+        if ($this->explicit !== null) {
+            $explicit = $dom->createElement("itunes:explicit", $this->explicit);
+            $channel->appendChild($explicit);
         }
 
         // Create the <language>
