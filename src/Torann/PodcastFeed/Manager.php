@@ -212,6 +212,7 @@ class Manager
         // Create the <rss>
         $rss = $dom->createElement("rss");
         $rss->setAttribute("xmlns:itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd");
+        $rss->setAttribute("xmlns:atom", "http://www.w3.org/2005/Atom");
         $rss->setAttribute("version", "2.0");
         $dom->appendChild($rss);
 
@@ -232,6 +233,13 @@ class Manager
         // Create the <link>
         $link = $dom->createElement("link", $this->link);
         $channel->appendChild($link);
+
+        // Create the <atom:link>
+        $atomLink = $dom->createElement("atom:link");
+        $atomLink->setAttribute("rel", "self");
+        $atomLink->setAttribute("type", "application/rss+xml");
+        $atomLink->setAttribute("href", $this->link);
+        $channel->appendChild($atomLink);
 
         // Create the <description>
         $description = $dom->createElement("description");
