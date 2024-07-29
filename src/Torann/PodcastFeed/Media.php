@@ -197,7 +197,7 @@ class Media
         $item->appendChild($guid);
 
         // Create the <link>
-        $link = $dom->createElement("link", $this->url);
+        $link = $dom->createElement("link", $this->link);
         $item->appendChild($link);
 
         // Create the <itunes:image>

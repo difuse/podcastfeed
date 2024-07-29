@@ -99,6 +99,13 @@ class Manager
     private $copyright = null;
 
     /**
+     * RSS url.
+     *
+     * @var string
+     */
+    private $selfLink = null;
+
+    /**
      * List of media for the podcast.
      *
      * @var array
@@ -139,6 +146,7 @@ class Manager
         $this->language = $this->getValue($data, 'language');
         $this->email = $this->getValue($data, 'email');
         $this->copyright = $this->getValue($data, 'copyright');
+        $this->selfLink = $this->getValue($data, 'self_link');
     }
 
     /**
@@ -238,7 +246,7 @@ class Manager
         $atomLink = $dom->createElement("atom:link");
         $atomLink->setAttribute("rel", "self");
         $atomLink->setAttribute("type", "application/rss+xml");
-        $atomLink->setAttribute("href", $this->link);
+        $atomLink->setAttribute("href", $this->selfLink);
         $channel->appendChild($atomLink);
 
         // Create the <description>
