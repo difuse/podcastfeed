@@ -100,6 +100,7 @@ class Media
         $this->duration = $this->getValue($data, 'duration');
         $this->author = $this->getValue($data, 'author');
         $this->image = $this->getValue($data, 'image');
+        $this->link = $this->getValue($data, 'link');
 
         // Ensure publish date is a DateTime instance
         if (is_string($this->pubDate)) {
@@ -194,6 +195,10 @@ class Media
         // Create the <guid>
         $guid = $dom->createElement("guid", $this->guid);
         $item->appendChild($guid);
+
+        // Create the <link>
+        $link = $dom->createElement("link", $this->link);
+        $item->appendChild($link);
 
         // Create the <itunes:image>
         if ($this->image) {

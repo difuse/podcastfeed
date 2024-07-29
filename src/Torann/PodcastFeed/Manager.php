@@ -213,9 +213,9 @@ class Manager
         $rss = $dom->createElement("rss");
         $rss->setAttribute("xmlns:itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd");
         $rss->setAttribute("xmlns:atom", "http://www.w3.org/2005/Atom");
+        $rss->setAttribute("xmlns:podcast", "https://podcastindex.org/namespace/1.0");
         $rss->setAttribute("version", "2.0");
         $dom->appendChild($rss);
-
         // Create the <channel>
         $channel = $dom->createElement("channel");
         $rss->appendChild($channel);
